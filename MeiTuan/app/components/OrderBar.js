@@ -1,21 +1,33 @@
+/**
+ * Created by Administrator on 2017/11/7.
+ */
 import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
     View,
-    TouchableOpacity,
-    Image
+    Image,
+    TextInput,
+    TouchableOpacity
 } from 'react-native';
 
-export default class OrderBar extends Component{
+export  default class OrderBar extends Component{
 
+    /**
+     * 给组件设计属性 get （常量）
+     * this.props
+     leftName:'订单',
+     * @type {{}}
+     */
     static defaultProps={
         leftName:null,
         hasArrow:false,
     }
 
+
     render(){
-        return(
+
+        return (
             <TouchableOpacity
                 activeOpacity={0.8}
                 onPress={ ()=>this.goToBack() }
@@ -24,14 +36,16 @@ export default class OrderBar extends Component{
                 {/*渲染一个箭头*/}
                 {this.renderArrowView()}
 
-            <View style={styles.view1Style}>
-                <Text style={{color:'white',fontSize:14,marginLeft:5,marginRight:5}}>{this.props.leftName}</Text>
-            </View>
+                {/*左*/}
+                <View
+                    style={styles.view1Style}>
+                    <Text style={{color:'white',fontSize:14,marginLeft:5,marginRight:5}}
+                    >{this.props.leftName}</Text>
+                </View>
 
             </TouchableOpacity>
         )
     }
-
 
     /**
      * 返回上一个页面：navigator
@@ -43,7 +57,6 @@ export default class OrderBar extends Component{
         this.props.navigator.pop();
 
     }
-
 
     /**
      * 渲染箭头
@@ -59,10 +72,9 @@ export default class OrderBar extends Component{
         }
     }
 
-
 }
 
-const styles = StyleSheet.create({
+const styles=StyleSheet.create({
     viewStyle:{
         height:40,
         backgroundColor:'#06C1AE',
@@ -71,8 +83,11 @@ const styles = StyleSheet.create({
 
     },
     view1Style:{
-        flexDirection:"row",
-        alignItems:"center",
+        flexDirection:'row',
+        alignItems:'center',
         justifyContent:'space-around'
-    }
+
+    },
+
 })
+
